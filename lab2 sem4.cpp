@@ -162,33 +162,27 @@ public:
 };
 
 int main() {
-    // Создание категорий
     Category* category1 = new Category("Electronics");
     Category* category2 = new Category("Clothing");
 
-    // Создание товаров
     Product* product1 = new Product("Smartphone", 1000.0, category1);
     Product* product2 = new Product("Laptop", 1500.0, category1);
     Product* product3 = new Product("T-Shirt", 20.0, category2);
     Product* product4 = new Product("Jeans", 50.0, category2);
 
-    // Создание каталога
     Catalog catalog;
     catalog.addCategory(category1);
     catalog.addCategory(category2);
 
-    // Добавление товаров в категории
     catalog.addProductToCategory(product1, category1);
     catalog.addProductToCategory(product2, category1);
     catalog.addProductToCategory(product3, category2);
     catalog.addProductToCategory(product4, category2);
 
-    // Создание пользователей и корзин
     std::map<std::string, Cart*> users;
     users["Tom"] = new CartDecorator();  
     users["Jerry"] = new Cart();
 
-    // Добавление товаров в корзины
     users["Tom"]->addProduct(product1);
     users["Tom"]->addProduct(product3);
     users["Tom"]->addProduct(product2);
@@ -197,18 +191,15 @@ int main() {
     users["Jerry"]->addProduct(product3);
     users["Jerry"]->addProduct(product4);
 
-    // Вывод заказов и общей цены для каждого пользователя
     for (const auto& user : users) {
         std::cout << "User: " << user.first << std::endl;
         user.second->printCart();  
         std::cout << std::endl;
     }
 
-    // Удаление товаров из корзин
     users["Tom"]->removeProduct(product1);
     users["Jerry"]->removeProduct(product2);
 
-    // Вывод обновленных заказов и общей цены для каждого пользователя
     std::cout << "Updated Carts:" << std::endl;
     for (const auto& user : users) {
         std::cout << "User: " << user.first << std::endl;
@@ -216,7 +207,6 @@ int main() {
         std::cout << std::endl;
     }
 
-    // Освобождение памяти
     for (const auto& user : users) {
         delete user.second;
     }
