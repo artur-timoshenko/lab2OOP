@@ -185,17 +185,17 @@ int main() {
 
     // Создание пользователей и корзин
     std::map<std::string, Cart*> users;
-    users["Alice"] = new CartDecorator();  
-    users["Bob"] = new Cart();
+    users["Tom"] = new CartDecorator();  
+    users["Jerry"] = new Cart();
 
     // Добавление товаров в корзины
-    users["Alice"]->addProduct(product1);
-    users["Alice"]->addProduct(product3);
-    users["Alice"]->addProduct(product2);
-    users["Alice"]->addProduct(product4);
-    users["Bob"]->addProduct(product2);
-    users["Bob"]->addProduct(product3);
-    users["Bob"]->addProduct(product4);
+    users["Tom"]->addProduct(product1);
+    users["Tom"]->addProduct(product3);
+    users["Tom"]->addProduct(product2);
+    users["Tom"]->addProduct(product4);
+    users["Jerry"]->addProduct(product2);
+    users["Jerry"]->addProduct(product3);
+    users["Jerry"]->addProduct(product4);
 
     // Вывод заказов и общей цены для каждого пользователя
     for (const auto& user : users) {
@@ -205,8 +205,8 @@ int main() {
     }
 
     // Удаление товаров из корзин
-    users["Alice"]->removeProduct(product1);
-    users["Bob"]->removeProduct(product2);
+    users["Tom"]->removeProduct(product1);
+    users["Jerry"]->removeProduct(product2);
 
     // Вывод обновленных заказов и общей цены для каждого пользователя
     std::cout << "Updated Carts:" << std::endl;
